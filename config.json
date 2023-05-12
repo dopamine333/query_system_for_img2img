@@ -1,0 +1,17 @@
+{
+    "api_url":"http://127.0.0.1:5000",
+    "img2img_url":"https://ai.jd-chie.store/discord_draw_img2img",
+
+    "app_run_debug_mode":true,
+
+    "raw_images_folder":"./raw_images",
+
+    "dbname":"postgres",
+    "dbuser":"postgres",
+    "dbpass":"mysecretpassword",
+    "dbhost":"localhost",
+
+    "redis_host":"localhost",
+    "redis_raw_cache":"raw_cache"
+
+}
