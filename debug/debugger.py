@@ -85,9 +85,9 @@ def call_handle_api():
     image_path = f'test_images/{random.choice(listdir)}'
     
     # request entity too large
-    # image_path = "/Users/as/Desktop/stable_diffusion_lab/python_api/query_system_one_debug/test_images/圖片已上傳至：2023-5-3 14-18.png"
+    # image_path = "/test_images/圖片已上傳至：2023-5-3 14-18.png"
     # len image base64:  2499452
-    # image_path="/Users/as/Desktop/stable_diffusion_lab/python_api/query_system_one/test_images/8f207c80-56f3-4740-b14c-9a19bf3a928f.png"
+    # image_path="/test_images/8f207c80-56f3-4740-b14c-9a19bf3a928f.png"
     # len image base64:  624288
     
 
