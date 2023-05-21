@@ -1,7 +1,8 @@
 
 # 圖生圖的訂單查詢系統
 
-這是一個有訂單查詢功能的ai圖生圖服務，輸入圖片，回傳一個查詢url。等一段時間後，再透過這個查詢url，得到圖生圖的結果。
+這是一個有訂單查詢功能的ai圖生圖服務，輸入圖片，回傳一個查詢url。
+等一段時間後，再透過這個查詢url，得到圖生圖的結果。
 
 ## 部署
 
@@ -10,6 +11,8 @@
 1. 所需的python套件
 2. 設定postgerSQL資料庫連接
 3. 設定redis快取連接
+
+以下是部署流程：
 
 首先，先把程式從git上clone程式下來。
 
@@ -30,7 +33,7 @@ pip install --requirement requirements.txt
 ```json
 {
     "api_url":"http://127.0.0.1:5000",
-    "img2img_url":"https://ai.jd-chie.store/discord_draw_img2img",
+    "img2img_url":"https://your.img2img.service.url",
 
     "app_run_debug_mode":true,
 
@@ -66,11 +69,18 @@ zsh run.sh
 輸入base64的圖片，回傳查詢query_url
 `route:/handle, method:POST`
 
+payload:
+
 ```json
-payload:{
+{
      "init_image": "AAANSUhE...AA4aywgU",(base64)
 }
-response: {
+```
+
+response:
+
+```json
+{
      "query_url": "http://127.0.0.1:5000/query/order_id"
 }
 ```
@@ -80,10 +90,24 @@ response: {
 輸入查詢query_url，回傳處理後的圖片的連結url
 `route:/query/<order_id>, method:GET`
 
+response:
+
 ```json
-response:{
+{
     "processed": "https://s3.amazonaws.com/processed/order_id.png"
 }
 ```
 
 `debug/debugger.py`是一個簡單的測試程式，裡面有一些簡單的範例，可以用來測試本服務的api。
+
+## 資料庫
+
+本服務使用postgerSQL作為資料庫，會創建一個`orders`的table用來儲存訂單資訊，包含訂單id，是否處理過，處理狀態。
+
+在啟動服務時（執行run.sh時）：會檢查是否有`orders`這個table，如果沒有，會自動建立。
+
+```sql
+CREATE TABLE IF NOT EXISTS orders (order_id VARCHAR PRIMARY KEY, processed VARCHAR, status INTEGER);
+```
+
+可能要注意table撞名的問題。

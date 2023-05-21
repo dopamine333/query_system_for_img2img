@@ -1,6 +1,6 @@
 {
     "api_url":"http://127.0.0.1:5000",
-    "img2img_url":"https://ai.jd-chie.store/discord_draw_img2img",
+    "img2img_url":"https://your.img2img.service.url",
 
     "app_run_debug_mode":true,
 

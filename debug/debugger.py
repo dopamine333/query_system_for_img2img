@@ -9,7 +9,7 @@ import redis
 import requests
 config = {
     "api_url":"http://127.0.0.1:5000",
-    "img2img_url":"https://ai.jd-chie.store/discord_draw_img2img",
+    "img2img_url":"https://your.img2img.service.url",
 
     "app_run_debug_mode":True,
 
@@ -19,14 +19,16 @@ config = {
     "dbuser":"postgres",
     "dbpass":"mysecretpassword",
     "dbhost":"localhost",
+    "dbport":5432,
 
     "redis_host":"localhost",
+    "redis_port":6379,
     "redis_raw_cache":"raw_cache"
 
 }
 
 def get_redis_connection():
-    return redis.Redis(host=config["redis_host"], port=6379, db=0)
+    return redis.Redis(host=config["redis_host"], port=config["redis_port"], db=0)
 
 
 def get_postgresql_connection():

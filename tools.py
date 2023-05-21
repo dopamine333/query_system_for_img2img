@@ -7,7 +7,7 @@ with open('config.json') as f:
 
 
 def get_redis_connection():
-    return redis.Redis(host=config["redis_host"], port=6379, db=0)
+    return redis.Redis(host=config["redis_host"], port=config["redis_port"], db=0)
 
 
 def get_postgresql_connection():
