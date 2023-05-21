@@ -155,15 +155,6 @@ def clear_db():
     cur.close()
     conn.close()
 
-def init_db():
-    conn = get_postgresql_connection()
-    cur = conn.cursor()
-    cur.execute(
-        "CREATE TABLE orders (order_id VARCHAR PRIMARY KEY, processed VARCHAR, status INTEGER)")
-    conn.commit()
-    cur.close()
-    conn.close()
-
 if __name__ == "__main__":
     # call sys.argv[1] function
     if len(sys.argv) > 1:

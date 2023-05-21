@@ -155,8 +155,17 @@ def qrcode_to_base64(qrcode):
     image_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
     return image_str
 
+def init_db():
+    conn = get_postgresql_connection()
+    cur = conn.cursor()
+    cur.execute(
+        "CREATE TABLE IF NOT EXISTS orders (order_id VARCHAR PRIMARY KEY, processed VARCHAR, status INTEGER)")
+    conn.commit()
+    cur.close()
+    conn.close()
 
 def run():
+    init_db()
     host,port=from_url_get_host_and_port(config['api_url'])
     app.run(host=host,
             port=port,

@@ -10,8 +10,10 @@
     "dbuser":"postgres",
     "dbpass":"mysecretpassword",
     "dbhost":"localhost",
+    "dbport":5432,
 
     "redis_host":"localhost",
+    "redis_port":6379,
     "redis_raw_cache":"raw_cache"
 
 }

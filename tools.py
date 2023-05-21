@@ -12,7 +12,7 @@ def get_redis_connection():
 
 def get_postgresql_connection():
     return psycopg2.connect(dbname=config["dbname"], user=config["dbuser"],
-                            password=config["dbpass"], host=config["dbhost"])
+                            password=config["dbpass"], host=config["dbhost"],port=config["dbport"])
 
 
 def get_image_path(raw_id):
